@@ -15,3 +15,4 @@ mermaid in Copenhagen using events and DOM manipulation.
 
 Assigment 3: Creation of a leaflet map and visualize airports in Ontario,
 Canada.
+Website of Assigment 3: https://sebasarangot96.github.io/JSandLeafletModule_GIS/ 
