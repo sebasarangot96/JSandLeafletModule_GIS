@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <title>Calculate Distance to the Little Mermaid</title>
+
+    <script>
+        let latitudeMermaid = 55.69
+        let longitudeMermaid = 12.59
+        // Function to calculate distance between two points
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+         const a = 0.5 - Math.cos((lat2 - lat1) * (Math.PI / 180))/2 +
+         Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *
+         (1 - Math.cos((lon2 - lon1) * (Math.PI / 180)))/2;
+         return 12742 * Math.asin(Math.sqrt(a)); 
+        }
+        // Function to generate random coordinates between the ranges 
+        function getRandomCoordinates(min, max) {
+         return min + (Math.random() * (max));
+        }
+        // Fuction to check validate coordinates
+        function validateCoordinates(valueLatitude,valueLongitude) {
+         if (isNaN(valueLatitude)) {
+         return false
+         };
+         if (isNaN(valueLongitude)) {
+         return false
+         };
+         if (valueLatitude < -90 || valueLatitude > 90) {
+         return false
+         };
+         if (valueLongitude < -180 || valueLongitude > 180) {
+         return false
+         };
+         return true
+        }
+        // Function to generate the output
+        function output() {
+            
+            
+            let latitude = parseFloat(document.getElementById('latitude').value);
+            let longitude = parseFloat(document.getElementById('longitude').value);
+            validator = validateCoordinates (latitude,longitude)
+            if (validator == false) {
+              document.getElementById('output').innerHTML = 'Please enter valid numbers within the WGS84 range.' ;
+            }
+            else {
+            distance = calculateDistance (latitudeMermaid,longitudeMermaid,latitude,longitude)
+            document.getElementById('output').innerHTML = 'Result: ' + distance.toFixed(2) + ' km';
+            }
+        }
+        // Function to generate the random coordinates 
+        function randomGenerator() {
+            
+            let latitudeRandom = getRandomCoordinates (latitudeMermaid,20);
+            let longitudeRandom = getRandomCoordinates (longitudeMermaid,20);
+            document.getElementById('latitude').value = latitudeRandom.toFixed(2);
+            document.getElementById('longitude').value = longitudeRandom.toFixed(2);
+        }
+        // Function to clear the fields 
+        function clearFields() {
+            
+            document.getElementById('latitude').value = '';
+            document.getElementById('longitude').value = '';
+            document.getElementById('output').innerHTML = '';
+
+        }
+        // Create event listener for each process
+        document.addEventListener('DOMContentLoaded', function() {
+
+            
+            let buttonElement1 = document.getElementById('button');
+            
+            
+            buttonElement1.addEventListener('click', function() {
+                randomGenerator();
+            });
+            
+            let buttonElement2 = document.getElementById('button2');
+            
+            buttonElement2.addEventListener('click', function() {
+                output();
+            });
+            
+            
+            let buttonElement3 = document.getElementById('button3');
+            
+            
+            buttonElement3.addEventListener('click', function() {
+                clearFields();
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <h1>Calculate Distance to the Little Mermaid</h1>
+    <p>
+        Latitude:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id="latitude" />
+        
+    </p>
+    <p>
+        
+        Longitude:&nbsp;&nbsp;&nbsp;<input type="number" id="longitude" />
+    </p>
+    <button id="button" type="button">Create Random Coordinate</button>
+    <button id="button2" type="button">Calculate Distance</button>
+    <button id="button3" type="button">Clear</button>
+    <p id="output"></p>
+
+</body>
+</html>
