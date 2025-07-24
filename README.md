@@ -1,5 +1,5 @@
 # JSandLeafletModule_GIS
-Developing Web-Applications with JS and Leaflet 
+Developing Web-Applications with JS and Leaflet:
 
 In my GIS Specialization at UNIGIS - Salzburg i took an optional module for Developing Web-Applications with JS and Leaflet. 
 
