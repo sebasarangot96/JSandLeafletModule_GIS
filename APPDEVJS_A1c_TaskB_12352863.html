@@ -1,0 +1,29 @@
+<meta charset="utf-8">
+ <title>Assignment A1c: JavaScript</title>
+ </head>
+ 
+ <body>
+ 
+ <script>
+ // list of Numbers to test the function 
+ let listNumbers = [1, 5, 8, 58, 85, 805, 510, 24, 4, 16];
+ // Function that takes list and saves the odd numbers of the list and saves them in a new list
+ function determineOdd (list) {
+   let oddNumbers = []
+   for (let number of list) {
+    oddTest = number % 2 
+    if (oddTest != 0) {
+      oddNumbers.push(number)
+   }
+   }
+  return oddNumbers
+ }
+ // Initialize the function and print the result in the console.
+ let result = determineOdd (listNumbers);
+ console.log('The odd numbers are ', result);
+
+
+ 
+ </script>
+ </body>
+</html>
